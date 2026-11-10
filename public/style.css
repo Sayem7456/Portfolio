@@ -11,6 +11,9 @@
   --on-accent: #FFFFFF;
   --brand: #88F9C0;
   --brand-rgb: 136, 249, 192;
+  --glow1-rgb: var(--brand-rgb);
+  --glow2-rgb: var(--accent-rgb);
+  --grid-rgb: var(--brand-rgb);
   --glow-a: 0.12;
   --glow-b: 0.06;
   --grid-a: 0.06;
@@ -30,30 +33,33 @@
 }
 
 [data-theme="light"] {
-  --accent-text: #0891b2;
-  --glow-a: 0.06;
-  --glow-b: 0.04;
-  --grid-a: 0.03;
-  --accent-rgb: 34, 211, 238;
-  --accent-hover: #5ee7ff;
-  --on-accent: #0b0d1a;
-  --brand: #0891b2;
-  --brand-rgb: 34, 211, 238;
-  --bg-primary: #f8f9fc;
+  --bg-primary: #FDFDFE;
   --bg-surface: #ffffff;
-  --bg-elevated: #f0f1f5;
+  --bg-elevated: #EEF7FE;
   --text-primary: #1a1b2e;
   --text-secondary: #6b6f82;
-  --accent: #0891b2;
-  --accent-dim: rgba(8, 145, 178, 0.1);
-  --border: rgba(8, 145, 178, 0.15);
-  --border-strong: rgba(8, 145, 178, 0.3);
+  --accent: #0099FF;
+  --accent-rgb: 0, 153, 255;
+  --accent-text: #006BB2;
+  --accent-hover: #33ADFF;
+  --on-accent: #01010D;
+  --brand: #CC310E;
+  --brand-rgb: 204, 49, 14;
+  --glow1-rgb: var(--accent-rgb);
+  --glow2-rgb: var(--brand-rgb);
+  --grid-rgb: var(--accent-rgb);
+  --glow-a: 0.08;
+  --glow-b: 0.04;
+  --grid-a: 0.05;
+  --accent-dim: rgba(var(--accent-rgb), 0.1);
+  --border: rgba(var(--brand-rgb), 0.25);
+  --border-strong: rgba(var(--brand-rgb), 0.5);
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
   --shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.12);
-  --shadow-glow: 0 0 24px rgba(8, 145, 178, 0.2);
+  --shadow-glow: 0 0 24px rgba(var(--accent-rgb), 0.25);
   --glass-bg: rgba(255, 255, 255, 0.85);
-  --glass-border: rgba(8, 145, 178, 0.1);
+  --glass-border: rgba(var(--brand-rgb), 0.2);
 }
 
 *,
@@ -232,8 +238,8 @@ header .container {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 80% 60% at 20% 30%, rgba(var(--brand-rgb), var(--glow-a)) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 50% at 80% 70%, rgba(var(--accent-rgb), var(--glow-b)) 0%, transparent 50%);
+    radial-gradient(ellipse 80% 60% at 20% 30%, rgba(var(--glow1-rgb), var(--glow-a)) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 70%, rgba(var(--glow2-rgb), var(--glow-b)) 0%, transparent 50%);
   pointer-events: none;
   z-index: 0;
 }
@@ -243,8 +249,8 @@ header .container {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(var(--brand-rgb), var(--grid-a)) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(var(--brand-rgb), var(--grid-a)) 1px, transparent 1px);
+    linear-gradient(rgba(var(--grid-rgb), var(--grid-a)) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--grid-rgb), var(--grid-a)) 1px, transparent 1px);
   background-size: 60px 60px;
   pointer-events: none;
   z-index: 0;
