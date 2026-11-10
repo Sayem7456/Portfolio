@@ -3,9 +3,9 @@ Education: Recent Computer Science and Engineering graduate from United Internat
 
 Research Focus: Deep learning, machine learning, medical image analysis, explainable AI, trustworthy AI, computer vision, multimodal learning, large language models, Retrieval-Augmented Generation, and time-series analysis.
 
-Publications: Four conference papers published, along with a research-related book chapter. Currently working on one ongoing Q1 journal manuscript and another submitted Q1 journal manuscript.
+Publications: Four conference papers published, along with a research-related book chapter. Two Q1 journal manuscripts are submitted and under review (ACAT-UE and GDDI), one Q1 journal manuscript (BS-Net) is in preparation, and CausalMask-XAI is an ongoing research project.
 
-Ongoing Q1 Journal: Curriculum-Guided Spatial Attention Resolves Multi-Annotator Label Ambiguity in Thoracic Disease Screening.
+Q1 Manuscript in Preparation: Curriculum-Guided Spatial Attention Resolves Multi-Annotator Label Ambiguity in Thoracic Disease Screening.
 
 Proposed BS-Net, a clinically grounded multi-label chest radiograph classification architecture based on DenseNet-121 and a custom Bottleneck Spatial Attention Module. The model uses supervised spatial attention with clinically validated bounding-box priors to reduce shortcut learning and improve interpretability.
 
@@ -13,7 +13,7 @@ BS-Net combines binary cross-entropy classification loss with soft Dice attentio
 
 The study demonstrated that unconstrained attention slightly reduced baseline performance, while clinically supervised attention improved classification and localization, including approximately 1.5% AUC improvements for Fibrosis and Calcification. Robustness testing with synthetic out-of-distribution artifacts produced a low false-positive rate of 0.0156, demonstrating resistance to shortcut features such as text markers and hospital tokens.
 
-Submitted Q1 Journal: Gradient-Decoupled Dual-Stream Isolation: A Lightweight MobileNetV3 Framework for Robust Melanoma Detection on Edge Devices.
+Submitted Q1 Journal (under review at Journal of Visual Communication and Image Representation, Elsevier): Gradient-Decoupled Dual-Stream Learning for Edge-Efficient Melanoma Classification (GDDI).
 
 Developed a lightweight dual-stream MobileNetV3 framework with approximately 2 million parameters for melanoma detection. The model processes global lesion shape at 224×224 resolution and local texture information at 128×128 resolution.
 
@@ -30,13 +30,13 @@ Additional research experience includes brain tumour classification using channe
 Career & Professional Status:
 Current Role: AI Engineer at Ethics Advance Technology Limited, Dhaka, Bangladesh.
 
-Responsibilities: Designing, developing, and integrating AI-powered systems for real-world educational and institutional applications. Responsibilities include LLM and RAG development, computer vision, AI system architecture, FastAPI backend integration, database design, asynchronous job processing, GPU workload management, and production deployment.
+Responsibilities: Designing, developing, and integrating AI-powered systems for real-world educational, institutional, and healthcare applications. Two systems are in production with real users (the AI-powered Medical Education Platform and ASTER), and he built most of the AI features in both. Responsibilities include LLM and RAG development, computer vision, AI system architecture, FastAPI backend integration, database design, asynchronous job processing, GPU workload management, and production deployment.
 
 Career Direction: Combining applied AI engineering with academic research to build expertise in trustworthy AI, medical imaging, educational AI, LLM systems, and production-ready machine learning applications.
 
-Current Major Professional Project: AI-Powered Medical Learning Management System.
+Production System 1: AI-Powered Medical Education Platform (AI-LMS), in production with real users at EATL.
 
-The AI-LMS is a comprehensive institutional educational platform designed primarily for medical education. It combines learning management, AI-generated educational content, automated assessment, online examination, viva, presentation generation, personalized learning, and academic analytics.
+The AI-LMS is a comprehensive institutional educational platform designed primarily for medical education. It combines learning management, RAG-based medical question answering over textbooks, AI-generated educational content, automated assessment, online examination, real-time AI viva, AI clinical patient practice simulation, AI-based live exam proctoring using computer vision, radiology learning, presentation generation, personalized learning, and academic analytics.
 
 Core AI-LMS Features:
 
@@ -137,19 +137,43 @@ const SECTIONS = [
     id: 'publications',
     title: 'Publications',
     aliases: ['publications', 'papers', 'published', 'conference papers', 'book chapter'],
-    content: `Publications: Four conference papers published, along with a research-related book chapter. Currently working on one ongoing Q1 journal manuscript and another submitted Q1 journal manuscript.`
+    content: `Publications: Four conference papers published, along with a research-related book chapter. Two Q1 journal manuscripts are submitted and under review (ACAT-UE and GDDI), one Q1 journal manuscript (BS-Net) is in preparation, and CausalMask-XAI is an ongoing research project.`
   },
   {
-    id: 'ongoing_q1',
-    title: 'Ongoing Q1 Journal - Thoracic Disease Screening (BS-Net)',
-    aliases: ['ongoing q1', 'ongoing journal', 'thoracic disease', 'bs-net', 'bs net', 'densenet', 'spatial attention', 'chest radiograph', 'chest x-ray', 'federated', 'multi-label', 'curriculum-guided'],
-    content: `Ongoing Q1 Journal: Curriculum-Guided Spatial Attention Resolves Multi-Annotator Label Ambiguity in Thoracic Disease Screening. Proposed BS-Net, a clinically grounded multi-label chest radiograph classification architecture based on DenseNet-121 and a custom Bottleneck Spatial Attention Module. The model uses supervised spatial attention with clinically validated bounding-box priors to reduce shortcut learning and improve interpretability. BS-Net combines binary cross-entropy classification loss with soft Dice attention-supervision loss through a dual-objective optimization strategy. On a diverse test set of 3,000 chest X-ray images, the model achieved a Macro-Average AUC of 0.9607, Mean Average Precision of 0.6506, Pointing Game Accuracy of 84.87%, and Mean IoU of 0.4941. The study demonstrated that unconstrained attention slightly reduced baseline performance, while clinically supervised attention improved classification and localization, including approximately 1.5% AUC improvements for Fibrosis and Calcification. Robustness testing with synthetic out-of-distribution artifacts produced a low false-positive rate of 0.0156, demonstrating resistance to shortcut features such as text markers and hospital tokens.`
+    id: 'bs_net',
+    title: 'Q1 Manuscript in Preparation - Thoracic Disease Screening (BS-Net)',
+    aliases: ['ongoing q1', 'ongoing journal', 'in preparation', 'running q1', 'q1 in preparation', 'thoracic disease', 'bs-net', 'bs net', 'densenet', 'spatial attention', 'chest radiograph', 'chest x-ray', 'federated', 'multi-label', 'curriculum-guided'],
+    content: `Q1 Manuscript in Preparation: Curriculum-Guided Spatial Attention Resolves Multi-Annotator Label Ambiguity in Thoracic Disease Screening. Proposed BS-Net, a clinically grounded multi-label chest radiograph classification architecture based on DenseNet-121 and a custom Bottleneck Spatial Attention Module. The model uses supervised spatial attention with clinically validated bounding-box priors to reduce shortcut learning and improve interpretability. BS-Net combines binary cross-entropy classification loss with soft Dice attention-supervision loss through a dual-objective optimization strategy. On a diverse test set of 3,000 chest X-ray images, the model achieved a Macro-Average AUC of 0.9607, Mean Average Precision of 0.6506, Pointing Game Accuracy of 84.87%, and Mean IoU of 0.4941. The study demonstrated that unconstrained attention slightly reduced baseline performance, while clinically supervised attention improved classification and localization, including approximately 1.5% AUC improvements for Fibrosis and Calcification. Robustness testing with synthetic out-of-distribution artifacts produced a low false-positive rate of 0.0156, demonstrating resistance to shortcut features such as text markers and hospital tokens.`
   },
   {
     id: 'submitted_q1',
-    title: 'Submitted Q1 Journal - Melanoma Detection (GDMI)',
-    aliases: ['submitted q1', 'submitted journal', 'melanoma', 'gdmi', 'gradient-decoupled', 'mobilenetv3', 'edge devices', 'isic 2020', 'dual-stream'],
-    content: `Submitted Q1 Journal: Gradient-Decoupled Dual-Stream Isolation: A Lightweight MobileNetV3 Framework for Robust Melanoma Detection on Edge Devices. Developed a lightweight dual-stream MobileNetV3 framework with approximately 2 million parameters for melanoma detection. The model processes global lesion shape at 224×224 resolution and local texture information at 128×128 resolution. Introduced Gradient-Decoupled Modality Isolation, a training strategy that trains the global and local streams independently before combining their predictions through inference-time ensemble fusion. This approach reduces modality collapse without introducing additional architectural complexity. Evaluated using patient-level five-fold cross-validation on the highly imbalanced ISIC 2020 dataset, the framework achieved a mean AUC-ROC of 0.8975 ± 0.0150 compared with 0.8872 for the joint-training baseline. It also achieved a Partial AUC of 0.9850 in the high-sensitivity screening region, accuracy of 90.2%, and specificity of 90.6%, while reducing false-positive predictions.`
+    title: 'Submitted Q1 Journals (Under Review)',
+    aliases: ['submitted q1', 'submitted journal', 'submitted journals', 'submitted manuscripts', 'under review', 'journal manuscripts', 'q1 journals'],
+    content: `Submitted Q1 Journals (under review): Two Q1 manuscripts are under review. (1) ACAT-UE: Uncertainty-Aware Cross-Modal Co-Attention Fusion for Reliable Multimodal Lung Cancer Classification Using CT and Histopathology, under review at Expert Systems with Applications (Elsevier), with accuracy of 92.78% and macro-AUC of 0.9682. (2) Gradient-Decoupled Dual-Stream Learning for Edge-Efficient Melanoma Classification (GDDI), under review at Journal of Visual Communication and Image Representation (Elsevier), a lightweight MobileNetV3 framework with mean AUC-ROC of 0.8975 on ISIC 2020. A third Q1 manuscript, BS-Net, is in preparation.`
+  },
+  {
+    id: 'acat_ue',
+    title: 'Submitted Q1 Journal - Multimodal Lung Cancer Classification (ACAT-UE)',
+    aliases: ['acat-ue', 'acat ue', 'lung cancer', 'multimodal', 'ct histopathology', 'histopathology', 'co-attention', 'uncertainty', 'monte carlo dropout', 'expert systems with applications', 'eswa', 'calibration'],
+    content: `Submitted Q1 Journal (under review at Expert Systems with Applications, Elsevier): ACAT-UE: Uncertainty-Aware Cross-Modal Co-Attention Fusion for Reliable Multimodal Lung Cancer Classification Using CT and Histopathology. The framework uses modality-specific encoders, iterative bidirectional co-attention between CT and histopathology, adaptive modality weighting, and Monte Carlo Dropout uncertainty (entropy and epistemic) on three classes: benign, adenocarcinoma, and squamous cell carcinoma. It achieved accuracy of 92.78%, macro-F1 of 0.9145, macro-AUC of 0.9682, expected calibration error of 0.0791, and Brier score of 0.0698, with higher uncertainty on incorrect predictions.`
+  },
+  {
+    id: 'causalmask_xai',
+    title: 'Ongoing Research Project - CausalMask-XAI',
+    aliases: ['causalmask', 'causalmask-xai', 'causal mask', 'research project', 'side project', 'breast ultrasound', 'explanation faithfulness', 'faithfulness', 'xai', 'bus-uclm', 'busi', 'grad-cam'],
+    content: `Ongoing Research Project (not yet a manuscript): CausalMask-XAI, an intervention-based framework for evaluating explanation faithfulness and localization in breast ultrasound classification. It compares an EfficientNet-B0 baseline with a causal-intervention model, trained on BUSI with grouped cross-validation and tested externally on BUS-UCLM, and scores Grad-CAM, Grad-CAM++, Integrated Gradients, and RISE explanations. The aim is to show that similar discrimination can hide very different threshold behavior and explanation quality. Results are not final.`
+  },
+  {
+    id: 'aster',
+    title: 'ASTER - AI Healthcare Triage Bot',
+    aliases: ['aster', 'triage', 'triage bot', 'healthcare triage', 'symptom extraction', 'urgency assessment', 'case routing', 'production system', 'production systems', 'production'],
+    content: `Production System 2: ASTER, an AI healthcare triage bot, in production with real users at EATL. ASTER performs conversational symptom extraction, urgency assessment, preliminary healthcare guidance, and structured case routing. Stack: LLMs, generative AI, prompt engineering, conversational voice AI, FastAPI, and REST APIs.`
+  },
+  {
+    id: 'gddi',
+    title: 'Submitted Q1 Journal - Melanoma Detection (GDDI)',
+    aliases: ['melanoma', 'gdmi', 'gddi', 'jvcir', 'gradient-decoupled', 'mobilenetv3', 'edge devices', 'isic 2020', 'dual-stream'],
+    content: `Submitted Q1 Journal (under review at Journal of Visual Communication and Image Representation, Elsevier): Gradient-Decoupled Dual-Stream Learning for Edge-Efficient Melanoma Classification (GDDI). Developed a lightweight dual-stream MobileNetV3 framework with approximately 2 million parameters for melanoma detection. The model processes global lesion shape at 224×224 resolution and local texture information at 128×128 resolution. Introduced Gradient-Decoupled Modality Isolation, a training strategy that trains the global and local streams independently before combining their predictions through inference-time ensemble fusion. This approach reduces modality collapse without introducing additional architectural complexity. Evaluated using patient-level five-fold cross-validation on the highly imbalanced ISIC 2020 dataset, the framework achieved a mean AUC-ROC of 0.8975 ± 0.0150 compared with 0.8872 for the joint-training baseline. It also achieved a Partial AUC of 0.9850 in the high-sensitivity screening region, accuracy of 90.2%, and specificity of 90.6%, while reducing false-positive predictions.`
   },
   {
     id: 'other_research',
@@ -161,7 +185,7 @@ const SECTIONS = [
     id: 'current_role',
     title: 'Current Role',
     aliases: ['current role', 'ai engineer', 'ethics advance technology', 'eatl', 'current position', 'job', 'work'],
-    content: `Current Role: AI Engineer at Ethics Advance Technology Limited, Dhaka, Bangladesh. Responsibilities: Designing, developing, and integrating AI-powered systems for real-world educational and institutional applications. Responsibilities include LLM and RAG development, computer vision, AI system architecture, FastAPI backend integration, database design, asynchronous job processing, GPU workload management, and production deployment.`
+    content: `Current Role: AI Engineer at Ethics Advance Technology Limited, Dhaka, Bangladesh. Responsibilities: Designing, developing, and integrating AI-powered systems for real-world educational, institutional, and healthcare applications. Two systems are in production with real users (the AI-powered Medical Education Platform and ASTER), and he built most of the AI features in both. Responsibilities include LLM and RAG development, computer vision, AI system architecture, FastAPI backend integration, database design, asynchronous job processing, GPU workload management, and production deployment.`
   },
   {
     id: 'career_direction',
@@ -171,9 +195,9 @@ const SECTIONS = [
   },
   {
     id: 'ai_lms',
-    title: 'AI-Powered Medical Learning Management System (AI-LMS)',
-    aliases: ['ai-lms', 'ai lms', 'medical lms', 'learning management', 'medical education', 'ai question generation', 'ai viva', 'ai presentation', 'ai evaluation', 'personalized learning', 'hybrid retrieval', 'online examination', 'ai usage management'],
-    content: `Current Major Professional Project: AI-Powered Medical Learning Management System. The AI-LMS is a comprehensive institutional educational platform designed primarily for medical education. It combines learning management, AI-generated educational content, automated assessment, online examination, viva, presentation generation, personalized learning, and academic analytics. Core AI-LMS Features: AI Question Generation (MCQ, descriptive, adaptive, short-answer, structured essay, clinical scenario-based questions), AI Viva System (interactive text and voice-based viva examinations, follow-up questions, answer evaluation, performance summaries), AI Presentation Generation (structured educational presentations from academic documents using background processing and dedicated GPU job queues), AI Evaluation (configurable rubrics, scores, feedback, strengths, weaknesses, improvement recommendations), Personalized Learning Paths (chapters, topics, learning materials, practice questions, difficulty levels based on student performance), Hybrid Retrieval System (BM25 keyword search, dense semantic retrieval, PostgreSQL, PGVector, metadata filtering, semantic chunking, context ranking), Online Examination (large student cohorts, structured examinations, question management, student submissions, performance tracking, administrative controls), AI Usage Management (token consumption, model usage, processing costs, available institutional AI balances), Production Architecture (FastAPI, Next.js, PostgreSQL, SQLAlchemy, Redis, WebSockets, background workers, distributed locks, dedicated GPU queues, asynchronous processing).`
+    title: 'AI-Powered Medical Education Platform (AI-LMS)',
+    aliases: ['ai-lms', 'ai lms', 'medical education platform', 'medical lms', 'patient simulation', 'proctoring', 'radiology learning', 'textbook qa', 'learning management', 'medical education', 'ai question generation', 'ai viva', 'ai presentation', 'ai evaluation', 'personalized learning', 'hybrid retrieval', 'online examination', 'ai usage management'],
+    content: `Production System 1: AI-Powered Medical Education Platform (AI-LMS), in production with real users at EATL. The AI-LMS is a comprehensive institutional educational platform designed primarily for medical education. It combines learning management, RAG-based medical question answering over textbooks, AI-generated educational content, automated assessment, online examination, real-time AI viva, AI clinical patient practice simulation, AI-based live exam proctoring using computer vision, radiology learning, presentation generation, personalized learning, and academic analytics. Core AI-LMS Features: AI Question Generation (MCQ, descriptive, adaptive, short-answer, structured essay, clinical scenario-based questions), AI Viva System (interactive text and voice-based viva examinations, follow-up questions, answer evaluation, performance summaries), AI Presentation Generation (structured educational presentations from academic documents using background processing and dedicated GPU job queues), AI Evaluation (configurable rubrics, scores, feedback, strengths, weaknesses, improvement recommendations), Personalized Learning Paths (chapters, topics, learning materials, practice questions, difficulty levels based on student performance), Hybrid Retrieval System (BM25 keyword search, dense semantic retrieval, PostgreSQL, PGVector, metadata filtering, semantic chunking, context ranking), Online Examination (large student cohorts, structured examinations, question management, student submissions, performance tracking, administrative controls), AI Usage Management (token consumption, model usage, processing costs, available institutional AI balances), Production Architecture (FastAPI, Next.js, PostgreSQL, SQLAlchemy, Redis, WebSockets, background workers, distributed locks, dedicated GPU queues, asynchronous processing).`
   },
   {
     id: 'opencode_skills',
@@ -288,7 +312,7 @@ function getStaticResponse(message) {
   if (/\b(researchgate|research gate)\b/.test(m)) return STATIC_RESPONSES.researchgate;
   if (/\b(linkedin|linked in)\b/.test(m)) return STATIC_RESPONSES.linkedin;
   if (/\b(who is sayem|who is md sayem|tell me about sayem|about sayem)\b/.test(m)) {
-    return `**Md Sayem Ahamed** is an AI Engineer at Ethics Advance Technology Limited and an Applied AI Researcher. He graduated with a BSc in Computer Science and Engineering from United International University (February 2025). His work spans deep learning, LLMs, RAG, medical image analysis, and production AI systems. He has published four conference papers and a book chapter, with two Q1 journal manuscripts (one ongoing, one submitted). Key projects include an AI-Powered Medical LMS, OpenCode Engineering Skills, Cheating Risk Analysis, AI Research Academy, Face Detector, and Resume-Optimizer-AI.`;
+    return `**Md Sayem Ahamed** is an AI Engineer at Ethics Advance Technology Limited and an Applied AI Researcher. He graduated with a BSc in Computer Science and Engineering from United International University (February 2025). His work spans deep learning, LLMs, RAG, medical image analysis, and production AI systems. He has published four conference papers and a book chapter, with two Q1 journal manuscripts under review (ACAT-UE and GDDI), a third (BS-Net) in preparation, and an ongoing research project (CausalMask-XAI). At EATL he built most of the AI features in two production systems, the AI-Powered Medical Education Platform and ASTER (an AI healthcare triage bot). Key projects include the Medical Education Platform, ASTER, OpenCode Engineering Skills, Cheating Risk Analysis, AI Research Academy, Face Detector, and Resume-Optimizer-AI.`;
   }
   return null;
 }

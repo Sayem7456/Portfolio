@@ -110,7 +110,7 @@
           <p class="hero-role">AI Engineer &middot; Applied AI Researcher</p>
           <h1>I Build <span>Intelligent AI</span> Systems</h1>
           <p>
-            AI Engineer building production-ready AI systems for education and healthcare. Researching deep learning, LLMs, RAG, and medical AI. Currently at <strong>EATL Innovation Hub Ltd</strong>.
+            AI Engineer shipping production AI systems for education and healthcare, with a parallel research track in medical image analysis, LLMs, and trustworthy AI. Currently at <strong>EATL Innovation Hub Ltd</strong>.
           </p>
           <div class="hero-buttons">
             <a href="https://drive.usercontent.google.com/u/0/uc?id=1yUdw5T41oG6X5PF1MgDh9ffD-e6t1oU-&export=download" class="btn btn-primary">
@@ -137,7 +137,10 @@
             I am a <strong>Computer Science and Engineering graduate (BSc, February 2025)</strong> from <strong>United International University</strong>, Bangladesh. My academic work focused on deep learning and medical image analysis, including attention mechanisms, hybrid architectures, and diagnostic systems. I have published research on brain tumor classification, system fault detection, elderly movement prediction, and ride-sharing optimization.
           </p>
           <p>
-            I currently work as an <strong>AI Engineer</strong> at <strong>Ethics Advance Technology Limited (EATL Innovation Hub Ltd)</strong>, Dhaka, where I design and deploy production AI systems for education and healthcare. My primary focus is an AI-powered Medical Learning Management System that integrates LLM-based content generation, automated assessment, voice-interactive viva, personalized learning paths, and hybrid retrieval. My professional direction combines applied AI engineering with academic AI research to build systems that are both scientifically grounded and practically deployable.
+            I currently work as an <strong>AI Engineer</strong> at <strong>Ethics Advance Technology Limited (EATL Innovation Hub Ltd)</strong>, Dhaka, where I design and deploy production AI systems for education and healthcare. Two of them are live with real users: an AI-powered Medical Education Platform (RAG-based medical QA, automated assessment, AI viva, clinical patient simulation, and live exam proctoring) and ASTER, an AI healthcare triage bot. I built most of the AI features in both.
+          </p>
+          <p>
+            Alongside this work I do first-author research in medical image analysis. Two Q1 journal manuscripts are under review, a third is in preparation, and a research project on the faithfulness of explanations in breast ultrasound AI is ongoing. My direction combines applied AI engineering with academic research, so the systems I build are both scientifically grounded and practically deployable.
           </p>
           <div class="research-interests">
             <h3>Research Interests</h3>
@@ -169,25 +172,35 @@
             <span class="status-badge status-active">CURRENT</span>
           </div>
           <p>
-            Designing, developing, and integrating AI-powered systems for real-world educational and institutional applications. Responsible for LLM and RAG development, computer vision, AI system architecture, FastAPI backend integration, database design, asynchronous job processing, GPU workload management, and production deployment.
+            Designing, developing, and integrating AI-powered systems for real-world educational, institutional, and healthcare applications. Two of the systems I work on are in production with real users, and I built most of the AI features in both. Responsible for LLM and RAG development, computer vision, AI system architecture, FastAPI backend integration, database design, asynchronous job processing, GPU workload management, and production deployment.
           </p>
-          <div class="subsection-label">Key Project: AI-Powered Medical LMS</div>
+          <div class="subsection-label">Production System 1: AI-Powered Medical Education Platform</div>
           <ul>
-            <li>AI question generation (MCQ, descriptive, adaptive, clinical scenarios)</li>
-            <li>Voice-interactive AI viva with follow-up questions and evaluation</li>
-            <li>AI presentation generation and automated rubric-based evaluation</li>
-            <li>Personalized learning paths and hybrid BM25-dense retrieval</li>
-            <li>Online examination management and institutional analytics</li>
-            <li>Production stack: FastAPI, Next.js, PostgreSQL, SQLAlchemy, Redis, WebSockets, GPU queues</li>
+            <li>RAG-based medical question answering over textbooks with hybrid BM25-dense retrieval (embeddings and pgvector)</li>
+            <li>AI content generation: MCQ, descriptive, adaptive, and clinical-scenario questions, plus presentations built from academic documents</li>
+            <li>Automated rubric-based grading with scores, feedback, and improvement recommendations</li>
+            <li>Real-time AI viva with follow-up questions and answer evaluation</li>
+            <li>AI clinical patient practice simulation and radiology learning</li>
+            <li>AI-based live exam proctoring using computer vision</li>
+            <li>Personalized learning paths, online examinations, and institutional analytics</li>
+            <li>Stack: FastAPI, Next.js, PostgreSQL, SQLAlchemy, Redis, WebSockets, LangChain, LangSmith, dedicated GPU queues, Docker</li>
+          </ul>
+          <div class="subsection-label" style="margin-top:16px;">Production System 2: ASTER, AI Healthcare Triage Bot</div>
+          <ul>
+            <li>Conversational symptom extraction</li>
+            <li>Urgency assessment and preliminary healthcare guidance</li>
+            <li>Structured case routing</li>
+            <li>Stack: LLMs, generative AI, prompt engineering, conversational voice AI, FastAPI, REST APIs</li>
           </ul>
           <div class="tech-tags">
             <span class="tech-tag">LLM/RAG</span>
             <span class="tech-tag">Computer Vision</span>
+            <span class="tech-tag">Conversational Voice AI</span>
             <span class="tech-tag">FastAPI</span>
             <span class="tech-tag">PostgreSQL</span>
             <span class="tech-tag">Redis</span>
             <span class="tech-tag">GPU Workloads</span>
-            <span class="tech-tag">SQLAlchemy</span>
+            <span class="tech-tag">LangChain</span>
             <span class="tech-tag">WebSockets</span>
           </div>
         </div>
@@ -200,20 +213,22 @@
         <span class="section-label">Projects</span>
         <h2 class="section-title">Featured Projects</h2>
         <div class="grid">
-          <!-- Project 1: AI-Powered Medical LMS -->
+          <!-- Project 1: AI-Powered Medical Education Platform -->
           <div class="project-card project-card-featured fade-in">
             <div class="project-card-header">
-              <h3>AI-Powered Medical Learning Management System</h3>
-              <span class="status-badge status-active">ACTIVE DEVELOPMENT</span>
+              <h3>AI-Powered Medical Education Platform</h3>
+              <span class="status-badge status-production">IN PRODUCTION</span>
             </div>
-            <p>An institutional AI-powered medical learning platform combining learning management, AI content generation, automated assessment, and academic analytics.</p>
+            <p>An institutional AI-powered medical learning platform at EATL, live with real users. It combines learning management, RAG-based medical QA, AI content generation, automated assessment, and academic analytics.</p>
             <div class="subsection-label">Key Capabilities</div>
             <ul>
+              <li>RAG-based medical QA with hybrid BM25-dense retrieval</li>
               <li>AI question generation (MCQ, descriptive, adaptive, SAQ, SEQ, clinical scenarios)</li>
-              <li>Voice-interactive AI viva with follow-up question generation and evaluation</li>
-              <li>AI presentation generation and automated answer evaluation with rubrics</li>
-              <li>Personalized learning paths and hybrid BM25-dense retrieval</li>
-              <li>Online examination management and institutional analytics</li>
+              <li>Real-time AI viva with follow-up question generation and evaluation</li>
+              <li>AI presentation generation and automated rubric-based grading</li>
+              <li>AI clinical patient practice simulation and radiology learning</li>
+              <li>AI-based live exam proctoring and online examination management</li>
+              <li>Personalized learning paths and institutional analytics</li>
             </ul>
             <div class="subsection-label" style="margin-top:12px;">Technologies</div>
             <div class="tech-tags">
@@ -224,8 +239,36 @@
               <span class="tech-tag">Redis</span>
               <span class="tech-tag">SQLAlchemy</span>
               <span class="tech-tag">WebSockets</span>
+              <span class="tech-tag">LangChain</span>
+              <span class="tech-tag">LangSmith</span>
               <span class="tech-tag">LLM/RAG</span>
               <span class="tech-tag">Computer Vision</span>
+              <span class="tech-tag">Docker</span>
+            </div>
+          </div>
+
+          <!-- Project 1b: ASTER -->
+          <div class="project-card project-card-featured fade-in">
+            <div class="project-card-header">
+              <h3>ASTER: AI Healthcare Triage Bot</h3>
+              <span class="status-badge status-production">IN PRODUCTION</span>
+            </div>
+            <p>A conversational AI healthcare triage assistant built at EATL. It collects symptoms through natural conversation, assesses urgency, gives preliminary guidance, and routes structured cases.</p>
+            <div class="subsection-label">Key Capabilities</div>
+            <ul>
+              <li>Conversational symptom extraction with LLMs</li>
+              <li>Urgency assessment and preliminary healthcare guidance</li>
+              <li>Structured case routing</li>
+              <li>Conversational voice AI and prompt-engineered response flows</li>
+            </ul>
+            <div class="subsection-label" style="margin-top:12px;">Technologies</div>
+            <div class="tech-tags">
+              <span class="tech-tag">LLMs</span>
+              <span class="tech-tag">Generative AI</span>
+              <span class="tech-tag">Prompt Engineering</span>
+              <span class="tech-tag">Conversational Voice AI</span>
+              <span class="tech-tag">FastAPI</span>
+              <span class="tech-tag">REST APIs</span>
             </div>
           </div>
 
@@ -359,15 +402,54 @@
         <span class="section-label">Research</span>
         <h2 class="section-title">Research &amp; Publications</h2>
         <div class="max-w-4xl">
-          <!-- Current Research -->
+          <!-- Submitted / Under Review -->
           <div class="pub-section-header">
-            <h3>Current Journal Research</h3>
+            <h3>Submitted Q1 Manuscripts (Under Review)</h3>
+          </div>
+
+          <div class="publication-item fade-in">
+            <div class="pub-header">
+              <h3>ACAT-UE: Uncertainty-Aware Cross-Modal Co-Attention Fusion for Reliable Multimodal Lung Cancer Classification Using CT and Histopathology</h3>
+              <span class="status-badge status-manuscript-submitted">UNDER REVIEW &middot; Q1</span>
+            </div>
+            <p class="pub-venue">Expert Systems with Applications (Elsevier)</p>
+            <p>A multimodal framework that fuses CT and histopathology through modality-specific encoders, iterative bidirectional co-attention, and adaptive modality weighting. Monte Carlo Dropout supplies predictive uncertainty (entropy and epistemic), which is higher on incorrect predictions, so unreliable cases can be flagged. Evaluated on three classes: benign, adenocarcinoma, and squamous cell carcinoma.</p>
+            <div class="subsection-label">Selected Results</div>
+            <div class="pub-metrics">
+              <span class="tech-tag">Accuracy: 92.78%</span>
+              <span class="tech-tag">Macro-F1: 0.9145</span>
+              <span class="tech-tag">Macro AUC: 0.9682</span>
+              <span class="tech-tag">ECE: 0.0791</span>
+              <span class="tech-tag">Brier: 0.0698</span>
+            </div>
+          </div>
+
+          <div class="publication-item fade-in">
+            <div class="pub-header">
+              <h3>Gradient-Decoupled Dual-Stream Learning for Edge-Efficient Melanoma Classification</h3>
+              <span class="status-badge status-manuscript-submitted">UNDER REVIEW &middot; Q1</span>
+            </div>
+            <p class="pub-venue">Journal of Visual Communication and Image Representation (Elsevier)</p>
+            <p>A lightweight approximately 2-million-parameter dual-stream MobileNetV3 framework. Gradient-Decoupled Modality Isolation (GDDI) trains the global shape stream (224&times;224) and the local texture stream (128&times;128) independently, then fuses them at inference to reduce modality collapse without extra architectural complexity.</p>
+            <div class="subsection-label">Selected Results (ISIC 2020, patient-level 5-fold CV)</div>
+            <div class="pub-metrics">
+              <span class="tech-tag">Mean AUC: 0.8975 ± 0.0150</span>
+              <span class="tech-tag">Joint-training AUC: 0.8872</span>
+              <span class="tech-tag">Partial AUC: 0.9850</span>
+              <span class="tech-tag">Accuracy: 90.2%</span>
+              <span class="tech-tag">Specificity: 90.6%</span>
+            </div>
+          </div>
+
+          <!-- In Preparation -->
+          <div class="pub-section-header">
+            <h3>Q1 Manuscript in Preparation</h3>
           </div>
 
           <div class="publication-item fade-in">
             <div class="pub-header">
               <h3>Curriculum-Guided Spatial Attention Resolves Multi-Annotator Label Ambiguity in Thoracic Disease Screening</h3>
-              <span class="status-badge status-manuscript-ongoing">ONGOING Q1 MANUSCRIPT</span>
+              <span class="status-badge status-manuscript-ongoing">IN PREPARATION &middot; Q1</span>
             </div>
             <p>BS-Net combines a DenseNet-121 backbone with a supervised Bottleneck Spatial Attention Module. Clinically validated bounding-box priors guide attention through a joint BCE and soft Dice objective, improving classification, localization and resistance to shortcut features.</p>
             <div class="subsection-label">Selected Results</div>
@@ -380,19 +462,23 @@
             </div>
           </div>
 
+          <!-- Ongoing Research Project -->
+          <div class="pub-section-header">
+            <h3>Ongoing Research Project</h3>
+          </div>
+
           <div class="publication-item fade-in">
             <div class="pub-header">
-              <h3>Gradient-Decoupled Dual-Stream Isolation: A Lightweight MobileNetV3 Framework for Robust Melanoma Detection on Edge Devices</h3>
-              <span class="status-badge status-manuscript-submitted">SUBMITTED Q1 MANUSCRIPT</span>
+              <h3>CausalMask-XAI: Intervention-Based Evaluation of Explanation Faithfulness and Localization in Breast Ultrasound Classification</h3>
+              <span class="status-badge status-research-project">ONGOING PROJECT</span>
             </div>
-            <p>A lightweight approximately 2-million-parameter dual-stream MobileNetV3 framework that independently trains global shape and local texture streams before inference-time fusion to reduce modality collapse.</p>
-            <div class="subsection-label">Selected Results</div>
+            <p>An intervention-based framework that tests whether explanations of breast ultrasound classifiers reflect what the model actually uses. An EfficientNet-B0 baseline is compared with a causal-intervention model, trained on BUSI with grouped cross-validation and tested externally on BUS-UCLM. Explanations from Grad-CAM, Grad-CAM++, Integrated Gradients, and RISE are scored for faithfulness and background invariance. The aim is to show that similar discrimination (AUROC) can hide very different threshold behavior and explanation quality.</p>
+            <div class="subsection-label">Focus</div>
             <div class="pub-metrics">
-              <span class="tech-tag">Mean AUC: 0.8975 ± 0.0150</span>
-              <span class="tech-tag">Baseline AUC: 0.8872</span>
-              <span class="tech-tag">Partial AUC: 0.9850</span>
-              <span class="tech-tag">Accuracy: 90.2%</span>
-              <span class="tech-tag">Specificity: 90.6%</span>
+              <span class="tech-tag">Explainable AI</span>
+              <span class="tech-tag">Causal Interventions</span>
+              <span class="tech-tag">Breast Ultrasound</span>
+              <span class="tech-tag">External Validation</span>
             </div>
           </div>
 
@@ -474,6 +560,8 @@
               <span class="tech-tag">Image Classification</span>
               <span class="tech-tag">Image Segmentation</span>
               <span class="tech-tag">Explainable AI</span>
+              <span class="tech-tag">Uncertainty Estimation</span>
+              <span class="tech-tag">Multimodal Learning</span>
               <span class="tech-tag">Time-Series Analysis</span>
             </div>
           </div>
@@ -484,6 +572,8 @@
               <span class="tech-tag">Large Language Models</span>
               <span class="tech-tag">Retrieval-Augmented Generation</span>
               <span class="tech-tag">LangChain</span>
+              <span class="tech-tag">LangGraph</span>
+              <span class="tech-tag">LangSmith</span>
               <span class="tech-tag">Hugging Face</span>
               <span class="tech-tag">Prompt Engineering</span>
               <span class="tech-tag">Embeddings</span>

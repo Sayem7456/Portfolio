@@ -55,13 +55,13 @@ test('local-fallback section scoring', async (t) => {
 
   await t.test('ai-lms query returns AI-LMS section', () => {
     const result = keywordAnswer('ai-lms');
-    assert.ok(result.content.includes('AI-Powered Medical Learning Management System'));
+    assert.ok(result.content.includes('AI-Powered Medical Education Platform'));
     assert.ok(result.content.includes('medical education'));
   });
 
   await t.test('medical lms alias works', () => {
     const result = keywordAnswer('medical lms');
-    assert.ok(result.content.includes('AI-Powered Medical Learning Management System'));
+    assert.ok(result.content.includes('AI-Powered Medical Education Platform'));
   });
 
   await t.test('opencode engineering skills query returns section', () => {
