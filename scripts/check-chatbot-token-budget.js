@@ -78,22 +78,6 @@ const MODELS = [
     deprecated: false,
     shutdownDate: null,
   },
-  {
-    id: 'llama-3.3-70b-versatile',
-    provider: 'groq',
-    envKey: 'GROQ_LLAMA_70B_TPM',
-    defaultTPM: 12000,
-    deprecated: true,
-    shutdownDate: '2026-08-16',
-  },
-  {
-    id: 'llama-3.1-8b-instant',
-    provider: 'groq',
-    envKey: 'GROQ_LLAMA_8B_TPM',
-    defaultTPM: 6000,
-    deprecated: true,
-    shutdownDate: '2026-08-16',
-  },
 ];
 
 function formatNumber(n) {

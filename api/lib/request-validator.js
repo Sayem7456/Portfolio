@@ -29,8 +29,16 @@ const INJECTION_PATTERNS = [
   /(?:repeat|print|show)\s+(?:the\s+)?(?:above|previous)\s+(?:prompt|instruction)/i,
 ];
 
+// Returns { valid, errors, injectionDetected, history }.
+// Prompt-injection matches are not validation errors: a flagged current message
+// is reported through injectionDetected so the handler can refuse politely, and
+// flagged history entries are dropped from the returned `history`. (The chat UI
+// keeps every sent message in its history, so rejecting on a flagged entry would
+// make every later request in that session fail too.)
 function validateChatRequest(body) {
   const errors = [];
+  let injectionDetected = false;
+  let history;
 
   if (!body || typeof body !== 'object') {
     return { valid: false, errors: ['Request body must be a JSON object.'] };
@@ -43,7 +51,7 @@ function validateChatRequest(body) {
   } else if (body.message.length > MAX_USER_MESSAGE_LENGTH) {
     errors.push(`"message" must not exceed ${MAX_USER_MESSAGE_LENGTH} characters (your message is ${body.message.length}).`);
   } else if (containsInjection(body.message)) {
-    errors.push('Message contains potentially unsafe: potential prompt injection attempt.');
+    injectionDetected = true;
   }
 
   if (body.history !== undefined) {
@@ -53,6 +61,7 @@ function validateChatRequest(body) {
       if (body.history.length > MAX_HISTORY_MESSAGES) {
         errors.push(`"history" must not exceed ${MAX_HISTORY_MESSAGES} messages.`);
       }
+      const kept = [];
       for (let i = 0; i < body.history.length; i++) {
         const entry = body.history[i];
         if (!entry || typeof entry !== 'object') {
@@ -69,13 +78,17 @@ function validateChatRequest(body) {
         } else if (entry.content.length > MAX_USER_MESSAGE_LENGTH) {
           errors.push(`history[${i}].content must not exceed ${MAX_USER_MESSAGE_LENGTH} characters.`);
         } else if (containsInjection(entry.content)) {
-          errors.push(`history[${i}].content contains potentially unsafe content.`);
+          continue;
         }
+        kept.push(entry);
       }
+      history = kept;
+    } else {
+      history = [];
     }
   }
 
-  return { valid: errors.length === 0, errors };
+  return { valid: errors.length === 0, errors, injectionDetected, history };
 }
 
 function containsInjection(text) {

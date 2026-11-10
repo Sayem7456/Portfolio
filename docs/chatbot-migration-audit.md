@@ -37,7 +37,7 @@ ByteBuddy is the portfolio chatbot (agent name). It runs as a FastAPI endpoint o
 - `public/index.html` — no embedded secrets.
 - `public/style.css` — no secrets.
 - `api/index.py` — loads keys from env (`os.getenv`), never hardcodes them.
-- `.gitignore` — correctly ignores `.env` and `.env.example`. No committed `.env` found.
+- `.gitignore` — correctly ignores `.env`. `.env.example` is tracked intentionally. No committed `.env` found.
 - `.env.example` — contains placeholder values only (`sk-...`). No real secrets.
 
 **Conclusion:** No secrets found in tracked client code. No rotation required. The `OPENAI_API_KEY` placeholder in `.env.example` should be replaced with the new provider's placeholder format for clarity.
@@ -172,9 +172,7 @@ The migration replaces OpenAI (single-provider, single-model) with a multi-provi
 1. **Groq** — `qwen/qwen3.6-27b` (primary, free-tier)
 2. **Groq** — `openai/gpt-oss-120b` (secondary, free-tier)
 3. **Google Gemini** — user-configured Flash model (free-tier)
-4. **Groq** — `llama-3.3-70b-versatile` (legacy, deprecated Aug 16 2026)
-5. **Groq** — `llama-3.1-8b-instant` (legacy, deprecated Aug 16 2026)
-6. **Local deterministic fallback** — no API required, always available
+4. **Local deterministic fallback** — no API required, always available
 
 Key improvements:
 - No single point of failure

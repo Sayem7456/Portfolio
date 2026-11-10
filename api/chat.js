@@ -1,15 +1,28 @@
-const { validateChatRequest, containsInjection } = require('./lib/request-validator');
-const { checkRateLimit } = require('./lib/rate-limit');
+const { validateChatRequest } = require('./lib/request-validator');
+const { checkRateLimit, getClientIp } = require('./lib/rate-limit');
 const { safeError, ERROR_CODES, normalizeError } = require('./lib/safe-error');
 const { loadProfileContext, buildSystemPrompt } = require('./lib/context-loader');
 const { routeChat } = require('./lib/provider-router');
 
-const ALLOWED_ORIGIN = 'https://portfolio-xdk9.vercel.app';
+const DEFAULT_ALLOWED_ORIGIN = 'https://portfolio-xdk9.vercel.app';
+const GUARD_REPLY = "I can't help with that request. I'm here to answer questions about Sayem's background, research, projects, and experience, so feel free to ask about any of those.";
+
+function getAllowedOrigins() {
+  const origins = new Set([process.env.ALLOWED_ORIGIN || DEFAULT_ALLOWED_ORIGIN]);
+  if (process.env.VERCEL_ENV === 'development') {
+    origins.add('http://localhost:3000');
+  }
+  return origins;
+}
 const MAX_PAYLOAD_SIZE = 64 * 1024;
 const REQUEST_TIMEOUT_MS = 25000;
 
 async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', ALLOWED_ORIGIN);
+  const allowedOrigins = getAllowedOrigins();
+  const requestOrigin = req.headers.origin;
+  const corsOrigin = allowedOrigins.has(requestOrigin) ? requestOrigin : [...allowedOrigins][0];
+  res.setHeader('Access-Control-Allow-Origin', corsOrigin);
+  res.setHeader('Vary', 'Origin');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   res.setHeader('X-Content-Type-Options', 'nosniff');
@@ -27,10 +40,13 @@ async function handler(req, res) {
     return;
   }
 
+  // Browsers always send Origin on a POST fetch, so a missing Origin means a
+  // non-browser client. A script can set the header too, so this is a
+  // low-cost filter, not authentication; the rate limiter does the real work.
   const origin = req.headers.origin;
-  if (origin && origin !== ALLOWED_ORIGIN) {
-    logSecurityEvent('INVALID_ORIGIN', req, { origin });
-    res.status(403).json(safeError('Invalid origin.', ERROR_CODES.INVALID_ORIGIN));
+  if (!origin || !allowedOrigins.has(origin)) {
+    logSecurityEvent('INVALID_ORIGIN', req, { origin: origin || null });
+    res.status(403).json(safeError('Invalid or missing origin.', ERROR_CODES.INVALID_ORIGIN));
     return;
   }
 
@@ -71,8 +87,15 @@ async function handler(req, res) {
     return;
   }
 
+  if (validation.injectionDetected) {
+    logSecurityEvent('PROMPT_INJECTION_BLOCKED', req);
+    res.status(200).json({ answer: GUARD_REPLY, provider: 'guard', model: null, fallbackUsed: false });
+    return;
+  }
+
+  let timeoutId;
   const timeoutPromise = new Promise((_, reject) => {
-    setTimeout(() => reject(new Error('Request timeout')), REQUEST_TIMEOUT_MS);
+    timeoutId = setTimeout(() => reject(new Error('Request timeout')), REQUEST_TIMEOUT_MS);
   });
 
   try {
@@ -80,7 +103,7 @@ async function handler(req, res) {
     const systemPrompt = buildSystemPrompt(profile);
 
     const result = await Promise.race([
-      routeChat(profile, body.message, body.history || [], systemPrompt),
+      routeChat(profile, body.message, validation.history || [], systemPrompt),
       timeoutPromise,
     ]);
 
@@ -99,11 +122,13 @@ async function handler(req, res) {
     } else {
       res.status(500).json(safeError('The portfolio assistant is temporarily unavailable.', ERROR_CODES.CHAT_UNAVAILABLE));
     }
+  } finally {
+    clearTimeout(timeoutId);
   }
 }
 
 function logSecurityEvent(event, req, details = {}) {
-  const ip = req.headers['x-forwarded-for']?.split(',')[0]?.trim() || req.socket?.remoteAddress || 'unknown';
+  const ip = getClientIp(req);
   const timestamp = new Date().toISOString();
   console.log(`[SECURITY] ${timestamp} | ${event} | IP: ${ip} | UA: ${req.headers['user-agent']?.slice(0, 100)} | ${JSON.stringify(details)}`);
 }

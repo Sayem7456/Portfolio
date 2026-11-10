@@ -18,16 +18,24 @@ test('pruneHistory tests', async (t) => {
   });
 });
 
-test('Legacy models deprecated check', () => {
-  const deprecated = PROVIDERS.find(p => p.status === 'deprecated');
-  assert.ok(deprecated, 'Should have a deprecated provider');
-  
-  const shutdownDate = new Date(deprecated.shutdownDate);
-  const beforeShutdown = new Date('2026-08-15');
-  const afterShutdown = new Date('2026-08-17');
+test('provider chain only contains live models', () => {
+  assert.ok(PROVIDERS.length > 0, 'Should have at least one active provider');
+  for (const p of PROVIDERS) {
+    assert.notStrictEqual(p.status, 'deprecated', `${p.provider}:${p.model} is deprecated`);
+    if (p.shutdownDate) {
+      assert.ok(new Date() < new Date(p.shutdownDate), `${p.provider}:${p.model} is past its shutdown date`);
+    }
+    assert.ok(!/llama/i.test(String(p.model)), 'Retired Llama models must not be in the chain');
+  }
+});
 
-  assert.ok(beforeShutdown < shutdownDate, 'Aug 15 is before shutdown');
-  assert.ok(afterShutdown >= shutdownDate, 'Aug 17 is after shutdown');
+test('expired and deprecated models are filtered out of the active list', () => {
+  const { isExpired, isDeprecated } = require('../../config/models');
+  assert.strictEqual(isExpired({ shutdownDate: '2000-01-01' }), true);
+  assert.strictEqual(isExpired({ shutdownDate: '2999-01-01' }), false);
+  assert.strictEqual(isExpired({}), false);
+  assert.strictEqual(isDeprecated({ status: 'deprecated' }), true);
+  assert.strictEqual(isDeprecated({ status: 'active' }), false);
 });
 
 test('routeChat fallback to local_fallback when keys are missing', async () => {

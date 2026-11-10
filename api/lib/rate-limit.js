@@ -2,14 +2,28 @@ const rateLimitStore = new Map();
 
 const WINDOW_MS = 60 * 1000;
 const MAX_REQUESTS = 10;
+const MAX_TRACKED_IPS = 5000;
 
-const TRUSTED_PROXY_HEADERS = ['x-forwarded-for', 'x-real-ip', 'cf-connecting-ip', 'true-client-ip'];
+// Headers set by the platform in front of this function. On Vercel, both are
+// written by the edge network and cannot be supplied by the client. Elsewhere
+// (local dev, self-hosting) they are client-controlled, so they are only read
+// when TRUST_PROXY=1 says a trusted reverse proxy sets them.
+const PLATFORM_IP_HEADERS = ['x-vercel-forwarded-for', 'x-forwarded-for'];
+
+function trustsForwardedHeaders() {
+  return Boolean(process.env.VERCEL) || process.env.TRUST_PROXY === '1';
+}
+
+function firstValue(header) {
+  if (Array.isArray(header)) header = header[0];
+  if (typeof header !== 'string') return null;
+  return header.split(',')[0].trim() || null;
+}
 
 function getClientIp(req) {
-  for (const header of TRUSTED_PROXY_HEADERS) {
-    const value = req.headers[header];
-    if (value && typeof value === 'string') {
-      const ip = value.split(',')[0].trim();
+  if (trustsForwardedHeaders()) {
+    for (const name of PLATFORM_IP_HEADERS) {
+      const ip = firstValue(req.headers?.[name]);
       if (isValidIp(ip)) {
         return ip;
       }
@@ -33,9 +47,21 @@ function isValidIp(ip) {
   return ipv6Regex.test(ip) || ip.includes(':');
 }
 
+function pruneExpired(now) {
+  for (const [ip, timestamps] of rateLimitStore) {
+    if (timestamps.length === 0 || now - timestamps[timestamps.length - 1] >= WINDOW_MS) {
+      rateLimitStore.delete(ip);
+    }
+  }
+}
+
 function checkRateLimit(req) {
   const ip = getClientIp(req);
   const now = Date.now();
+
+  if (rateLimitStore.size > MAX_TRACKED_IPS) {
+    pruneExpired(now);
+  }
 
   if (!rateLimitStore.has(ip)) {
     rateLimitStore.set(ip, []);
@@ -54,4 +80,8 @@ function checkRateLimit(req) {
   return { allowed: true };
 }
 
-module.exports = { checkRateLimit };
+function resetRateLimit() {
+  rateLimitStore.clear();
+}
+
+module.exports = { checkRateLimit, getClientIp, resetRateLimit, MAX_REQUESTS, WINDOW_MS };

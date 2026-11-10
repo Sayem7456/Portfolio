@@ -10,22 +10,6 @@ const MODEL_CONFIG = {
       timeoutMs: 10000,
       status: 'active',
     },
-    legacy: {
-      primary: {
-        model: process.env.GROQ_LEGACY_PRIMARY_MODEL || 'llama-3.3-70b-versatile',
-        timeoutMs: 9000,
-        status: 'deprecated',
-        shutdownDate: '2026-08-16',
-        replacement: ['qwen/qwen3.6-27b', 'openai/gpt-oss-120b'],
-      },
-      secondary: {
-        model: process.env.GROQ_LEGACY_SECONDARY_MODEL || 'llama-3.1-8b-instant',
-        timeoutMs: 7000,
-        status: 'deprecated',
-        shutdownDate: '2026-08-16',
-        replacement: ['openai/gpt-oss-120b'],
-      },
-    },
   },
   gemini: {
     primary: {

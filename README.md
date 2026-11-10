@@ -8,7 +8,7 @@ AI Engineer and Applied AI Researcher building production AI systems for educati
 
 | Layer | Technology |
 |---|---|
-| Frontend | Vanilla HTML/CSS/JS, Tailwind CSS 2.2.19 (CDN), Font Awesome 6 (CDN) |
+| Frontend | Vanilla HTML/CSS/JS (custom CSS with dark/light themes), Font Awesome 6 (CDN) |
 | Backend | Node.js serverless (`@vercel/node`) — provider fallback chain |
 | Chatbot | ByteBuddy — fetches context from PDF resume and `summary.txt` |
 | Deploy | Vercel (static files + serverless functions) |
@@ -42,7 +42,7 @@ Frontend is served by Vercel routing during dev. Chat endpoint is `POST /api/cha
 ```
 ├── public/                    # Static frontend
 │   ├── index.html             # Main page (hero, about, experience, projects, publications, skills, contact)
-│   ├── style.css              # Cyberpunk dark theme (~1440 lines)
+│   ├── style.css              # Dark/light theme styles
 │   ├── script.js              # Chatbot UI, scroll animations, form validation
 │   ├── sayem3.png             # Profile photo
 │   └── favicon.svg            # SVG favicon
@@ -97,9 +97,7 @@ The chatbot uses a multi-provider fallback chain:
 1. **Groq** — `qwen/qwen3.6-27b` (primary)
 2. **Groq** — `openai/gpt-oss-120b` (secondary)
 3. **Google Gemini** — Free-tier Flash model (if configured)
-4. **Groq** — `llama-3.3-70b-versatile` (legacy)
-5. **Groq** — `llama-3.1-8b-instant` (legacy)
-6. **Local fallback** — Deterministic keyword-matching (no API required)
+4. **Local fallback** — Deterministic keyword-matching (no API required)
 
 Tool calling: `record_user_details` (Pushover) and `record_unknown_question`.
 
@@ -107,6 +105,7 @@ Tool calling: `record_user_details` (Pushover) and `record_unknown_question`.
 
 - Chatbot context is loaded from `api/data/Profile.pdf` and `api/data/summary.txt` at startup. Restart the server after updating these files.
 - The serverless function requires `GROQ_API_KEY` to function. Without it, only the local keyword fallback works.
-- CORS is configured for `https://portfolio-xdk9.vercel.app` only.
+- Requests must carry an `Origin` header matching `ALLOWED_ORIGIN` (default `https://portfolio-xdk9.vercel.app`); anything else gets `403`. `http://localhost:3000` is also allowed under `vercel dev`.
+- Rate limiting is in-memory, per function instance (10 requests/minute per IP). On Vercel the client IP comes from `x-vercel-forwarded-for`; set `TRUST_PROXY=1` only when running behind your own trusted proxy.
+- Messages that look like prompt-injection attempts get a polite refusal (HTTP 200) instead of an error, so a single flagged message never breaks the chat session.
 - The browser calls only `/api/chat` — never Groq or Gemini directly.
-- Legacy Llama models are deprecated Aug 16, 2026 — the architecture works without them.

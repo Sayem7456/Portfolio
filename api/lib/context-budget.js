@@ -13,14 +13,6 @@ const MODEL_BUDGETS = {
     freeTPM: Number(process.env.GROQ_GPT_OSS_TPM || 8000),
     safetyRatio: 0.85,
   },
-  "llama-3.3-70b-versatile": {
-    freeTPM: Number(process.env.GROQ_LLAMA_70B_TPM || 12000),
-    safetyRatio: 0.85,
-  },
-  "llama-3.1-8b-instant": {
-    freeTPM: Number(process.env.GROQ_LLAMA_8B_TPM || 6000),
-    safetyRatio: 0.85,
-  },
 };
 
 function getModelBudget(modelId) {
